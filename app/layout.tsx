@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 // Components
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import {ThemeProvider} from "@/components/theme-provider";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -29,9 +30,14 @@ export default function RootLayout({
           "min-h-screen bg-background font-sans antialiased",
           fontSans.variable
         )}>
-        <Header />
-        {children}
-        <Footer />
+         <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          disableTransitionOnChange>
+          <Header />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
